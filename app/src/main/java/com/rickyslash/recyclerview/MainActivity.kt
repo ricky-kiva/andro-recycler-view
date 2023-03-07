@@ -64,12 +64,12 @@ class MainActivity : AppCompatActivity() {
         // assigning 'StringArray' / 'TypedArray' from 'resources' (res)
         val dataName = resources.getStringArray(R.array.data_name)
         val dataDesc = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+        val dataPhoto = resources.getStringArray(R.array.data_photo)
         val listHero = ArrayList<Hero>()
 
         // make 'object' for 'each data' 'in resources'
         for (i in dataName.indices) {
-            val hero = Hero(dataName[i], dataDesc[i], dataPhoto.getResourceId(i, -1))
+            val hero = Hero(dataName[i], dataDesc[i], dataPhoto[i])
             // add it to the ArrayList that's going to be returned
             listHero.add(hero)
         }

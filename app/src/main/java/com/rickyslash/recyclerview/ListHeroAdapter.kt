@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 /* BIG NOTE ABOUT THE PROCESS*/
 // This is a class that works as an 'Adapter' for the 'RecyclerView'
@@ -62,9 +63,12 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>): RecyclerView.Adapt
         val (name, desc, photo) = listHero[position]
 
         // 'assigning' the data from the 'current position'
-        holder.imgPhoto.setImageResource(photo)
         holder.tvName.text = name
         holder.tvDesc.text = desc
+        // use 'Glide' plugin to fetch 'image' from the internet
+        Glide.with(holder.itemView.context)
+            .load(photo) // the URL
+            .into(holder.imgPhoto) // 'ImageView' to be 'applied' the photo
 
         // add 'setOnClickListener' by 'callback'
         // the 'onItemClickCallback' referenced from 'lateinit var' in this class. It reference the 'OnItemClickCallback' 'Interface'
